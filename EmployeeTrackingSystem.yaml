@@ -1,0 +1,124 @@
+Company:
+  id  #created_at,updated_at(in all tables)
+  name
+  subdomain (unique)
+  owner_id
+User:
+  id
+  first_name
+  last_name
+  email
+  devise_columns
+  role_id
+  company_id #in all tables
+  sequence_num
+  department_id
+  active #booleon
+Team:
+  id
+  name
+  description
+  company_id
+  sequence_num
+  lead_id
+UsersTeams:
+  id
+  team_id
+  user_id
+  company_id
+Task: #need to implement state machine
+  id
+  title
+  description
+  company_id
+  assigned_to_id #team/user
+  assigned_to_type 
+  created_by_id
+  status
+  due_date
+  project_id
+  reviewer_id
+  watcher_id
+  watcher_type #polymorphic
+  started_at
+  completed_at
+  progress
+  expected_end_date
+  expected_start_date
+  priority #label(integer map to constant)
+Project: #Visibility control,Reports help,grouping in tasks
+  id
+  name
+  company_id
+  description
+  status
+  start_date
+  end_date
+  expected_end_date
+  expected_start_date
+  created_by_id
+Attendance:
+  id
+  company_id
+  user_id
+  login_time
+  logout_time
+  prsent (boolean) #leave,present
+
+Department:
+  id
+  company_id
+  name
+  description
+ProjectsDepartments:
+  id
+  company_id
+  project_id
+  department_id
+Comment:
+  id
+  company_id
+  commentable_id
+  commentable_type #project,task
+  content 
+Attachment:
+  id
+  company_id
+  attachable_id
+  attachable_type
+TimeLog:
+  id
+  task_id
+  company_id
+  user_id
+  hours #decimal type precision and scale on descion
+Event:
+  id
+  company_id
+  event_date
+  title
+  description
+  created_by_id 
+CompanySetting:
+  id
+  company_id
+#UserSetting: not required yet
+  #id
+  #user_id
+Notification:
+  id
+  title
+  description
+  sent
+
+
+
+
+  
+
+
+
+
+
+
+  
